@@ -7,5 +7,31 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "David Whynot",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "browser-sync": "^2.26.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "del": "^3.0.0",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-gunzip": "^1.1.0",
+    "gulp-gzip": "^1.4.2",
+    "gulp-inject": "^4.3.2",
+    "gulp-inject-string": "^1.1.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-tar": "^2.1.0",
+    "gulp-untar": "0.0.7",
+    "mysql": "^2.16.0",
+    "passport": "^0.4.0",
+    "sql-strip-comments": "0.0.23",
+    "stripe": "^6.12.1"
+  }
 }

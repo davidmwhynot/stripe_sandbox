@@ -1,3 +1,24 @@
+
 <div class="container">
-	<h1 class="display-1">Stripe Sandbox</h1>
+	<h1 class="display-4">Intro To React Course - <span class="text-muted">$50</span></h1>
+
+
+	<form action="/charge" method="post" id="payment-form" data-key="{{{pubKey}}}">
+		<div class="form-row">
+			<input type="text" name="first_name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="First Name">
+			<input type="text" name="last_name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Last Name">
+			<input type="email" name="email" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Email Address">
+			<label for="card-element" class="sr-only">
+				Credit or debit card
+			</label>
+			<div id="card-element" class="form-control">
+				<!-- A Stripe Element will be inserted here. -->
+			</div>
+
+			<!-- Used to display form errors. -->
+			<div id="card-errors" role="alert"></div>
+		</div>
+
+		<button class="btn btn-outline-primary btn-lg btn-block mt-3">Submit Payment</button>
+	</form>
 </div>

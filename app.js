@@ -57,7 +57,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // cookie parser
-app.use(cookieParser());
+// app.use(cookieParser());
 
 // json
 app.use(express.json());

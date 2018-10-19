@@ -1,0 +1,23 @@
+<h2 class="text-center mt-3">Transactions</h2>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Transaction ID</th>
+			<th>Customer</th>
+			<th>Product</th>
+			<th>Amount</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each transactions}}
+		<tr>
+			<td>{{transaction_id}}</td>
+			<td>{{transaction_customer_id_f}}</td>
+			<td>{{transaction_product}}</td>
+			<td class="transaction_amount" data-amount="{{transaction_amount}}">&nbsp;<span class="transaction_currency">{{transaction_currency}}</span></td>
+			<td>{{transaction_created_at}}</td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>

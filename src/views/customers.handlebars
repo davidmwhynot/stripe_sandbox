@@ -1,0 +1,23 @@
+<div class="container-fluid mt-3">
+	<h2 class="text-center">Customers</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Customer ID</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each customers}}
+			<tr>
+				<td>{{customer_id}}</td>
+				<td>{{customer_first_name}} {{customer_last_name}}</td>
+				<td>{{customer_email}}</td>
+				<td>{{customer_created_at}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>

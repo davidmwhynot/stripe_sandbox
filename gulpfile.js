@@ -36,8 +36,6 @@ const untar = require('gulp-untar');
 const del = require('del');
 
 
-const puppeteer = require('puppeteer');
-
 // self
 const scrubsql = require('./build/scrubsql');
 
@@ -130,7 +128,7 @@ const AUTOPREFIXER_BROWSERS = [
 		});
 
 	// js
-		gulp.task('scripts', () => {
+		gulp.task('scripts_local', () => {
 			return gulp.src('./src/public/js/*.js')
 				.pipe(concat('main.js'))
 				// .pipe(babel({ FIXME
@@ -139,6 +137,15 @@ const AUTOPREFIXER_BROWSERS = [
 				// .pipe(uglify())
 				.pipe(gulp.dest('./dist/pub/js'));
 		});
+		gulp.task('scripts_vendor', () => {
+			return gulp.src('./src/public/js/vendor/*.js')
+				// .pipe(babel({ FIXME
+				// 	presets: ['env']
+				// }))
+				// .pipe(uglify())
+				.pipe(gulp.dest('./dist/pub/js'));
+		});
+		gulp.task('scripts', gulp.parallel('scripts_local', 'scripts_vendor'));
 
 	// sass
 		gulp.task('sass', () => {
@@ -223,7 +230,7 @@ const AUTOPREFIXER_BROWSERS = [
 
 		// gulp.task('watch', () => { TODO
 		// 	gulp.watch('./src/public/db/*.sql', ['db']);
-		// 	gulp.watch('./src/public/js/*.js', ['scripts']);
+		// 	gulp.watch('./src/public/js/**/*.js', ['scripts']);
 		// 	gulp.watch('./src/public/sass/**/*.scss', ['sass']);
 		// 	gulp.watch('./src/public/*.html', ['html']);
 		// });
@@ -232,7 +239,7 @@ const AUTOPREFIXER_BROWSERS = [
 		gulp.task('front', gulp.series('scripts', 'sass'));
 
 		gulp.task('watch_front', () => {
-			gulp.watch('./src/public/js/*.js', gulp.series('scripts'));
+			gulp.watch('./src/public/js/**/*.js', gulp.series('scripts'));
 			gulp.watch('./src/public/sass/**/*.scss', gulp.series('sass'));
 		});
 
