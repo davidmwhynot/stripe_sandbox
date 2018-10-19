@@ -4,9 +4,9 @@
 	desc: Gulp task definitions
 	author: David Whynot
 	email: davidmwhynot@gmail.com
-	Project: redditpull
-	Created: 9/1/18
-	Updated: 10/15/18
+	Project: stripe_sandbox
+	Created: 10/19/18
+	Updated: 10/19/18
 
 */
 
@@ -47,14 +47,14 @@ const scrubsql = require('./build/scrubsql');
 /* XXX CONFIG XXX */
 require('dotenv').config();
 const DB = {
-	database: process.env.REDDITPULL_DB_DATABASE,
-	host: process.env.REDDITPULL_DB_HOST,
-	user: process.env.REDDITPULL_DB_USER,
-	password: process.env.REDDITPULL_DB_PASSWORD,
-	configUser: process.env.REDDITPULL_MYSQL_USER,
-	configPassword: process.env.REDDITPULL_MYSQL_PASSWORD
+	database: process.env.STRIPESANDBOX_DB_DATABASE,
+	host: process.env.STRIPESANDBOX_DB_HOST,
+	user: process.env.STRIPESANDBOX_DB_USER,
+	password: process.env.STRIPESANDBOX_DB_PASSWORD,
+	configUser: process.env.STRIPESANDBOX_MYSQL_USER,
+	configPassword: process.env.STRIPESANDBOX_MYSQL_PASSWORD
 }
-const AREA = process.env.REDDITPULL_AREA;
+const AREA = process.env.STRIPESANDBOX_AREA;
 const AUTOPREFIXER_BROWSERS = [
 	'> 1%',
 	'last 2 versions'
@@ -252,21 +252,6 @@ gulp.task('setup_prod', gulp.series('front', 'media', 'db', (done) => {
 
 
 // other
-gulp.task('scrape', (done) => {
-	// TODO: run this gulp task to scrape data and put it in the database for the front end to serve later
-	done();
-});
-
-
-gulp.task('test', (done) => {
-	scrape().then((value) => {
-		let obj = JSON.parse(value);
-		console.log(obj);
-		done();
-	});
-});
-
-
 gulp.task('nodemon', (cb) => {
 
 	var started = false;
@@ -294,8 +279,6 @@ gulp.task('browsersync', (done) => {
 	done();
 });
 
-
-
 gulp.task('app', gulp.series('nodemon', 'browsersync'));
 
 gulp.task('default', gulp.series('app', () => {
@@ -304,32 +287,10 @@ gulp.task('default', gulp.series('app', () => {
 	gulp.watch('./src/routes/*.*', gulp.series('front'));
 }));
 
+
+
+
 /* XXX FUNCTIONS XXX */
-async function scrape() {
-  const browser = await puppeteer.launch({headless: true});
-  const page = await browser.newPage();
-
-  await page.goto('https://www.reddit.com/r/pics/.json');
-  await page.click('pre');
-  // await page.waitFor(1000);
-
-  const result = await page.evaluate(() => {
-  	return document.querySelector('pre').innerText;
-	});
-
-  browser.close();
-  return result;
-};
-
-async function getPic() {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto('https://google.com');
-  await page.screenshot({path: 'google.png'});
-
-  await browser.close();
-}
-
 function error(e) {
 	console.error(e);
 	throw e;
