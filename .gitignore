@@ -1,0 +1,6 @@
+node_modules
+.env
+dist
+rp
+media.tar
+media.tar.gz

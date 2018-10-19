@@ -1,0 +1,11 @@
+{
+  "name": "stripe_sandbox",
+  "version": "1.0.0",
+  "description": "Sandbox for playing with stripe api.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Whynot",
+  "license": "MIT"
+}
